@@ -22,8 +22,8 @@ Examples
 Once the files have been imported, you can implement them with simple function calls. Here are some examples.
 ```python
 # Download Apple price history and save adjusted close prices to numpy array
-import pandas.io.data as pd
-x = pd.DataReader("AAPL", "yahoo")['Adj Close']
+import pandas_datareader as pdr
+x = pdr.DataReader("AAPL", "yahoo")['Adj Close']
 
 # Make some trendlines
 import trendy
