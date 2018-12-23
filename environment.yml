@@ -1,0 +1,43 @@
+name: trendy
+channels:
+  - defaults
+dependencies:
+  - blas=1.0=mkl
+  - certifi=2018.11.29=py36_0
+  - icc_rt=2019.0.0=h0cc432a_1
+  - intel-openmp=2019.1=144
+  - mkl=2018.0.3=1
+  - numpy=1.12.1=py36hf30b8aa_1
+  - pip=18.1=py36_0
+  - python=3.6.7=h9f7ef89_2
+  - setuptools=40.6.3=py36_0
+  - sqlite=3.26.0=he774522_0
+  - vc=14.1=h0510ff6_4
+  - vs2015_runtime=14.15.26706=h3a45250_0
+  - wheel=0.32.3=py36_0
+  - wincertstore=0.2=py36h7fe50ca_0
+  - pip:
+    - atomicwrites==1.2.1
+    - attrs==18.2.0
+    - chardet==3.0.4
+    - colorama==0.4.1
+    - cycler==0.10.0
+    - idna==2.8
+    - kiwisolver==1.0.1
+    - lxml==4.2.5
+    - matplotlib==3.0.2
+    - more-itertools==4.3.0
+    - pandas==0.23.4
+    - pandas-datareader==0.7.0
+    - pluggy==0.8.0
+    - py==1.7.0
+    - pyparsing==2.3.0
+    - pytest==4.0.2
+    - python-dateutil==2.7.5
+    - pytz==2018.7
+    - requests==2.21.0
+    - six==1.12.0
+    - urllib3==1.24.1
+    - wrapt==1.10.11
+prefix: C:\Users\tyu-dev\Anaconda3\envs\trendy
+
