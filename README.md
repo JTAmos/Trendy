@@ -23,8 +23,8 @@ Once the files have been imported, you can implement them with simple function c
 ```python
 # Download Apple price history and save adjusted close prices to numpy array
 import pandas_datareader as pdr
-x = pdr.DataReader("AAPL", "yahoo")['Adj Close']
-
+#x = pdr.DataReader("AAPL", "yahoo")['Adj Close']
+x = pdr.DataReader('WIKI/AAPL','quandl', '2017-01-01', '2017-12-31')['AdjClose']
 # Make some trendlines
 import trendy
 
@@ -45,6 +45,8 @@ trendy.iterlines(x, window = 30, charts = True)  # buy at green dots, sell at re
 ```
 
 **GNU GPL v2.0 modified file notice**
+__12/23/2018 - Changes made by Timothy Yu__
+- update to README.md pandas_datareader import to use Quandl as source for example (Yahoo API is deprecated as of latest pdr version)
 __12/23/2018 - Changes made by Timothy Yu__
 - Incorporated readme update for pandas_datareader import from fork
 - Created `requirements.txt` (pip) and `environment.yml` (anaconda/conda) for package requirements; current code for `minitrends()` requires numpy `1.12.1` or lower to function properly without a rewrite or reimplementation of local minima/maximia detection
