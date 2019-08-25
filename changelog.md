@@ -4,7 +4,7 @@ License: GNU GPL v2.0
 ## 12/23/2018 - Changes made by Timothy Yu
 - `runtests.py` created for numpy 1.12.1 version check
   - Created  `environment.yml` (anaconda/conda) for package requirements; current code for `minitrends()` requires numpy `1.12.1` or lower to function properly without a rewrite or reimplementation of local minima/maximia detection
-    - Behavior of masked arrays has changed above numpy `1.12.1`; minima/maxima code for minitrends() requires rewrite or reimplemention for newer numpy versions
+    - Behavior of masked arrays has changed above numpy `1.12.1`; minima/maxima code for minitrends() requires rewrite or re-implement for newer numpy versions
     - Reference/discussion about this issue on an unrelated repository/project:
     - https://github.com/dereneaton/ipyrad/issues/253#issuecomment-317842437`
 
