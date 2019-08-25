@@ -44,15 +44,3 @@ trendy.iterlines(x, window = 30, charts = True)  # buy at green dots, sell at re
 
 ```
 
-**GNU GPL v2.0 modified file notice**
-__12/23/2018 - Changes made by Timothy Yu__
-- update to README.md pandas_datareader import to use Quandl as source for example (Yahoo API is deprecated as of latest pdr version)
-__12/23/2018 - Changes made by Timothy Yu__
-- Incorporated readme update for pandas_datareader import from fork
-- Created `requirements.txt` (pip) and `environment.yml` (anaconda/conda) for package requirements; current code for `minitrends()` requires numpy `1.12.1` or lower to function properly without a rewrite or reimplementation of local minima/maximia detection
-- `LICENSE.txt` update with original creator copyright + name as per GPL v2.0
-- Added `runtests.py` with specific test and raise Exception for numpy version(s) that are not `1.12.1`
-    - Behavior of masked arrays has changed above numpy `1.12.1`; minima/maxima code for minitrends() requires rewrite or reimplemention for newer numpy versions
-    - Reference/dicussion about this issue on an unrelated repository/project:
-    - https://github.com/dereneaton/ipyrad/issues/253#issuecomment-317842437
-- Added `.pytest_cache` & `__pycache__` to `.gitignore`
