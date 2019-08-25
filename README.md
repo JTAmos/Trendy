@@ -22,14 +22,14 @@ Examples
 Once the files have been imported, you can implement them with simple function calls. Here are some examples.
 ```python
 # Download Apple price history and save adjusted close prices to numpy array
-import pandas.io.data as pd
-x = pd.DataReader("AAPL", "yahoo")['Adj Close']
-
+import pandas_datareader as pdr
+#x = pdr.DataReader("AAPL", "yahoo")['Adj Close']
+x = pdr.DataReader('WIKI/AAPL','quandl', '2017-01-01', '2017-12-31')['AdjClose']
 # Make some trendlines
 import trendy
 
 # Generate general support/resistance trendlines and show the chart
-# winow < 1 is considered a fraction of the length of the data set
+# window < 1 is considered a fraction of the length of the data set
 trendy.gentrends(x, window = 1.0/3, charts = True)
 
 # Generate a series of support/resistance lines by segmenting the price history
@@ -41,4 +41,6 @@ trendy.minitrends(x, window = 30, charts = True)
 
 # Iteratively generate trading signals based on maxima/minima in given window
 trendy.iterlines(x, window = 30, charts = True)  # buy at green dots, sell at red dots
+
 ```
+

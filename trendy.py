@@ -1,3 +1,11 @@
+### License: GNU GPL v2.0 ###
+		
+import pandas as pd
+import pandas_datareader as pdr
+import numpy as np
+import matplotlib.pyplot as plt
+from matplotlib.pyplot import plot, grid, show
+
 def gentrends(x, window=1/3.0, charts=True):
     """
     Returns a Pandas dataframe with support and resistance lines.
@@ -7,10 +15,6 @@ def gentrends(x, window=1/3.0, charts=True):
                    will be taken as a percentage of the size of the data
     :param charts: Boolean value saying whether to print chart to screen
     """
-
-    import numpy as np
-    import pandas.io.data as pd
-
     x = np.array(x)
 
     if window < 1:
@@ -51,7 +55,6 @@ def gentrends(x, window=1/3.0, charts=True):
                           columns=['Data', 'Max Line', 'Min Line'])
 
     if charts is True:
-        from matplotlib.pyplot import plot, grid, show
         plot(trends)
         grid()
         show()
@@ -68,30 +71,29 @@ def segtrends(x, segments=2, charts=True):
                    will be taken as a percentage of the size of the data
     :param charts: Boolean value saying whether to print chart to screen
     """
-
-    import numpy as np
     y = np.array(x)
 
     # Implement trendlines
+
+	# Find the indexes of these maxima in the data
+		# https://github.com/dysonance/Trendy/issues/1#issue-65824377 implemented
     segments = int(segments)
     maxima = np.ones(segments)
-    minima = np.ones(segments)
+    minima = np.ones(segments) 
+    x_maxima = np.ones(segments)
+    x_minima = np.ones(segments)
     segsize = int(len(y)/segments)
     for i in range(1, segments+1):
         ind2 = i*segsize
         ind1 = ind2 - segsize
-        maxima[i-1] = max(y[ind1:ind2])
-        minima[i-1] = min(y[ind1:ind2])
-
-    # Find the indexes of these maxima in the data
-    x_maxima = np.ones(segments)
-    x_minima = np.ones(segments)
-    for i in range(0, segments):
-        x_maxima[i] = np.where(y == maxima[i])[0][0]
-        x_minima[i] = np.where(y == minima[i])[0][0]
+        seg = y[ind1:ind2]
+        maxima[i-1] = max(seg)
+        minima[i-1] = min(seg)
+        x_maxima[i-1] = ind1 + (np.where(seg == maxima[i-1])[0][0])
+        x_minima[i-1] = ind1 + (np.where(seg == minima[i-1])[0][0])
 
     if charts:
-        import matplotlib.pyplot as plt
+       
         plt.plot(y)
         plt.grid(True)
 
@@ -126,10 +128,8 @@ def minitrends(x, window=20, charts=True):
                    will be taken as a percentage of the size of the data
     :param charts: Boolean value saying whether to print chart to screen
     """
-
-    import numpy as np
-
     y = np.array(x)
+
     if window < 1:  # if window is given as fraction of data length
         window = float(window)
         window = int(window * len(y))
@@ -138,10 +138,10 @@ def minitrends(x, window=20, charts=True):
     crit = dy[:-1] * dy[1:] < 0
 
     # Find whether max's or min's
-    maxi = (y[x[crit]] - y[x[crit] + window] > 0) & \
-           (y[x[crit]] - y[x[crit] - window] > 0) * 1
-    mini = (y[x[crit]] - y[x[crit] + window] < 0) & \
-           (y[x[crit]] - y[x[crit] - window] < 0) * 1
+    maxi = ((y[x[crit]] - y[x[crit] + window] > 0) & \
+           (y[x[crit]] - y[x[crit] - window] > 0) * 1)
+    mini = ((y[x[crit]] - y[x[crit] + window] < 0) & \
+           (y[x[crit]] - y[x[crit] - window] < 0) * 1)
     maxi = maxi.astype(float)
     mini = mini.astype(float)
     maxi[maxi == 0] = np.nan
@@ -189,7 +189,6 @@ def minitrends(x, window=20, charts=True):
 
     # Plot results if desired
     if charts is True:
-        from matplotlib.pyplot import plot, show, grid
         plot(x, y)
         plot(xMax, yMax, '-o')
         plot(xMin, yMin, '-o')
@@ -208,9 +207,6 @@ def iterlines(x, window=30, charts=True):
                    will be taken as a percentage of the size of the data
     :param charts: Boolean value saying whether to print chart to screen
     """
-
-    import numpy as np
-
     x = np.array(x)
     n = len(x)
     if window < 1:
@@ -228,11 +224,26 @@ def iterlines(x, window=30, charts=True):
     ymin = x[xmin]
     ymax = x[xmax]
     if charts is True:
-        from matplotlib.pyplot import plot, grid, show
+  
         plot(x)
-        plot(xmin, ymin, 'ro')
-        plot(xmax, ymax, 'go')
+        plot(xmin, ymin, 'go')
+        plot(xmax, ymax, 'ro')
         grid(True)
         show()
 
     return sigs
+
+def bbands(price, length=20, numsd=2):
+    """ returns average, upper band, and lower band"""\
+
+    # Requires format of ['Open', 'High', 'Low', 'Close', 'Volume', 'Adj Close']
+    	#x = x.reindex(index=x.index[::-1])
+    	#upper, center, lower = ta.bbands(x)
+
+    # print(price[['High', 'Low', 'Close']].sum(axis=1))
+    mean = price[['High', 'Low', 'Close']].mean(axis=1)
+    ave = mean.rolling(length).mean()
+    sd = mean.rolling(length).std(ddof=0)
+    upband = ave + (sd * numsd)
+    dnband = ave - (sd * numsd)
+    return np.round(upband, 0), np.round(ave, 0), np.round(dnband, 0)

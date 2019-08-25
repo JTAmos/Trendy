@@ -1,0 +1,57 @@
+name: trendy
+channels:
+  - anaconda
+  - defaults
+dependencies:
+  - asn1crypto=0.24.0=py36_0
+  - blas=1.0=mkl
+  - ca-certificates=2019.5.15=1
+  - certifi=2019.6.16=py36_1
+  - cffi=1.12.3=py36h7a1dbc1_0
+  - chardet=3.0.4=py36_1003
+  - cryptography=2.7=py36h7a1dbc1_0
+  - icc_rt=2019.0.0=h0cc432a_1
+  - intel-openmp=2019.1=144
+  - libiconv=1.15=vc14h29686d3_5
+  - libxml2=2.9.9=h464c3ec_0
+  - libxslt=1.1.33=h579f668_0
+  - mkl=2018.0.3=1
+  - numpy=1.12.1=py36hf30b8aa_1
+  - openssl=1.1.1=he774522_0
+  - pip=18.1=py36_0
+  - pycparser=2.19=py36_0
+  - pyopenssl=19.0.0=py36_0
+  - pysocks=1.7.0=py36_0
+  - python=3.6.7=h9f7ef89_2
+  - setuptools=40.6.3=py36_0
+  - sqlite=3.26.0=he774522_0
+  - vc=14.1=h0510ff6_4
+  - vs2015_runtime=14.15.26706=h3a45250_0
+  - wheel=0.32.3=py36_0
+  - win_inet_pton=1.1.0=py36_0
+  - wincertstore=0.2=py36h7fe50ca_0
+  - zlib=1.2.11=vc14h1cdd9ab_1
+  - pip:
+    - atomicwrites==1.2.1
+    - attrs==18.2.0
+    - colorama==0.4.1
+    - cycler==0.10.0
+    - idna==2.8
+    - kiwisolver==1.0.1
+    - lxml==4.2.5
+    - matplotlib==3.0.2
+    - more-itertools==4.3.0
+    - pandas==0.23.4
+    - pandas-datareader==0.7.0
+    - pluggy==0.8.0
+    - py==1.7.0
+    - pyparsing==2.3.0
+    - pytest==4.0.2
+    - python-dateutil==2.7.5
+    - pytz==2018.7
+    - requests==2.21.0
+    - six==1.12.0
+    - urllib3==1.24.1
+    - wrapt==1.10.11
+prefix: C:\Users\mainuser\Anaconda3\envs\trendy
+
