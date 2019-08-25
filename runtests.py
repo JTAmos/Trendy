@@ -1,6 +1,4 @@
-#### **GNU GPL v2.0 modified file notice** ###
-# 12/23/2018 - Changes made by Timothy Yu
-	# runtests.py created for numpy 1.12.1 version check
+### License: GNU GPL v2.0 ###
 
 import pytest
 import numpy as np

@@ -1,10 +1,4 @@
-#### **GNU GPL v2.0 modified file notice** ###
-# 12/23/2018 - Changes made by Timothy Yu
-	# Incorporated "bug in gentrends #1" PR fix by fraka6 into segtrends().
-	# Moved imports to beginning of trendy.py + removed redundant imports
-	# Updated pandas_datareader import from `pandas.io.data` 
-	# Added bbands function from kimtaesu fork 
-		# https://github.com/kimtaesu/Trendy/commit/29fc88a35f3a701b9e2c309957cb23bb6d1c9f78
+### License: GNU GPL v2.0 ###
 		
 import pandas as pd
 import pandas_datareader as pdr
